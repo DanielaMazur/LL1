@@ -25,15 +25,6 @@ def parseGrammar(fileName):
   from collections import defaultdict
   return defaultdict(lambda: "default", vn=vn, vt=vt, grammar=grammar)
 
-
-def getFirstSet(grammar, vt):
-    firstSet = {}
-
-    for nonTerminal in grammar:
-        firstSet[nonTerminal] = firstOf(nonTerminal, grammar, vt)
-    
-    return firstSet
-
 def firstOf(nonTerminal, grammar, vt):
     first = []
 
@@ -47,15 +38,6 @@ def firstOf(nonTerminal, grammar, vt):
 
         first.extend(firstOf(nonTerminalFirst, grammar, vt))
     return first
-
-        
-def getFollowSet(grammar, vt):
-    followSet = {}
-
-    for nonTerminal in grammar:
-        followSet[nonTerminal] = followOf(nonTerminal, grammar, vt)
-    
-    return followSet
 
 def followOf(nonTerminal, grammar, vt):
     follow = []
